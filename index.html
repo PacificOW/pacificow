@@ -2,114 +2,62 @@
 <html>
 <head>
   <title>Fortnite Vbuck Calculator</title>
-  <div id="Title"><img src="TitlePNG.png"></div>
+  <div id="Title"><img src="TitlePNGv2.png"></div>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 <style>
 #Title {
   text-align:center;
 }
 
 #Declaration {
-  font-family: "Bebas Neue";
+  font-family: "Quicksand";
   text-align:center;
+  font-weight: bold;
+  color:white;
 }
 
 html {
-  background-image: url("FORTNITEBACKGROUND.jpg");
+  background-image: url("FORTNITEBACKGROUNDv3.png");
+}
+
+#tier {
+  display:block;
+  font-family:"Quicksand";
+  margin: 0 auto;
+  border: 2px solid gray;
+  border-radius: 3px;
+}
+
+#credit {
+  display:block;
+  font-family:"Quicksand";
+  margin: 0 auto;
+  border: 2px solid gray;
+  border-radius: 3px;
 }
 </style>
 <script>
-var CurrentTier = prompt("What is your current battlepass tier?");
-var CurrentBalance = prompt("How many Vbucks do you currently have?");
-var Remaining1To3 = 1500;
-var Remaining4To9 = 1400;
-var Remaining10To17 = 1300;
-var Remaining18To18 = 1100
-var Remaining19To25 = 1100;
-var Remaining26To33 = 1000;
-var Remaining34To34 = 900;
-var Remaining35To41 = 800;
-var Remaining42To50 = 700;
-var Remaining51To57 = 600;
-var Remaining58To63 = 500;
-var Remaining64To73 = 400;
-var Remaining74To82 = 300;
-var Remaining83To89 = 200;
-var Remaining90To97 = 100;
-var Remaining98To100 = 0;
-
-if (CurrentTier >= 1 && CurrentTier <= 3) {
-  var RemainingDeterminer = Remaining1To3;
+function remaining(tier){
+ var r,rmna=[[ 1, 1500],[ 4, 1400],[10, 1300],[18, 110],[19, 1100],
+             [26, 1000],[34,  900],[35,  800],[42, 700],[51,  600],
+             [58,  500],[64,  400],[74,  300],[83, 200],[90,  100],[98, 0]];
+ rmna.forEach(rm=>{if (rm[0]>tier) return false; r=rm[1]});
+ return r
 }
-
-if (CurrentTier >= 4 && CurrentTier <= 9) {
-  var RemainingDeterminer = Remaining4To9;
-}
-
-if (CurrentTier >= 10 && CurrentTier <= 17) {
-  var RemainingDeterminer = Remaining10To17;
-}
-
-if (CurrentTier >= 18 && CurrentTier <= 18) {
-  var RemainingDeterminer = Remaining18To18;
-}
-
-if (CurrentTier >= 19 && CurrentTier <= 25) {
-  var RemainingDeterminer = Remaining19To25;
-}
-
-if (CurrentTier >= 26 && CurrentTier <= 33) {
-  var RemainingDeterminer = Remaining26To33;
-}
-
-if (CurrentTier >= 34 && CurrentTier <= 34) {
-  var RemainingDeterminer = Remaining34To34;
-}
-
-if (CurrentTier >= 35 && CurrentTier <= 41) {
-  var RemainingDeterminer = Remaining35To41;
-}
-
-if (CurrentTier >= 42 && CurrentTier <= 50) {
-  var RemainingDeterminer = Remaining42To50;
-}
-
-if (CurrentTier >= 51 && CurrentTier <= 57) {
-  var RemainingDeterminer = Remaining51To57;
-}
-
-if (CurrentTier >= 58 && CurrentTier <= 63) {
-  var RemainingDeterminer = Remaining58To63;
-}
-
-if (CurrentTier >= 64 && CurrentTier <= 73) {
-  var RemainingDeterminer = Remaining64To73;
-}
-
-if (CurrentTier >= 74 && CurrentTier <= 82) {
-  var RemainingDeterminer = Remaining74To82;
-}
-
-if (CurrentTier >= 83 && CurrentTier <= 89) {
-  var RemainingDeterminer = Remaining83To89;
-}
-
-if (CurrentTier >= 90 && CurrentTier <= 97) {
-  var RemainingDeterminer = Remaining90To97;
-}
-
-if (CurrentTier >= 98 && CurrentTier <= 100) {
-  var RemainingDeterminer = Remaining98To100;
-}
-
-var FinalBalance = CurrentBalance*1+RemainingDeterminer
-
-function myFunction() {
-    var PrintedRemaining = FinalBalance;
-    document.getElementById("myText").innerHTML = PrintedRemaining;
+function setCredits(o){
+  var tier=document.getElementById("tier").value-0;
+  var cred=document.getElementById("credit").value-0;
+  document.getElementById("myText").innerHTML=cred+remaining(tier);
 }
 </script>
 </head>
-<body onload="myFunction()">
-  <div id="Declaration"><h1>If you finish the Battlepass and do not spend any VBucks, you will have <span id="myText"></span> Vbucks.</h1></div><span id="myText"></span>
+<body>
+  <input type="text" id="tier" oninput="setCredits()"
+   placeholder="Enter current tier here">
+  <input type="text" id="credit" oninput="setCredits()"
+   placeholder="Enter current balance">
+  <div id="Declaration">
+  <h1>If you finish the Battlepass, and do not spend any VBucks,
+      you will have <span id="myText"></span> Vbucks.</h1></div>
 </body>
 </html>
