@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fortnite Vbuck Calculator</title>
+  <div id="Title"><img src="TitlePNGv2.png"></div>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+<style>
+#Title {
+  text-align:center;
+}
+
+#Declaration {
+  font-family: "Quicksand";
+  text-align:center;
+  font-weight: bold;
+  color:white;
+}
+
+html {
+  background-image: url("FORTNITEBACKGROUNDv3.png");
+}
+
+#tier {
+  display:block;
+  font-family:"Quicksand";
+  margin: 0 auto;
+  border: 2px solid gray;
+  border-radius: 3px;
+}
+
+#credit {
+  display:block;
+  font-family:"Quicksand";
+  margin: 0 auto;
+  border: 2px solid gray;
+  border-radius: 3px;
+}
+</style>
+<script>
+function remaining(tier){
+ var r,rmna=[[ 1, 1500],[ 4, 1400],[10, 1300],[18, 110],[19, 1100],
+             [26, 1000],[34,  900],[35,  800],[42, 700],[51,  600],
+             [58,  500],[64,  400],[74,  300],[83, 200],[90,  100],[98, 0]];
+ rmna.forEach(rm=>{if (rm[0]>tier) return false; r=rm[1]});
+ return r
+}
+function setCredits(o){
+  var tier=document.getElementById("tier").value-0;
+  var cred=document.getElementById("credit").value-0;
+  document.getElementById("myText").innerHTML=cred+remaining(tier);
+}
+</script>
+</head>
+<body>
+  <input type="text" id="tier" oninput="setCredits()"
+   placeholder="Enter current tier here">
+  <input type="text" id="credit" oninput="setCredits()"
+   placeholder="Enter current balance">
+  <div id="Declaration">
+  <h1>If you finish the Battlepass, and do not spend any VBucks,
+      you will have <span id="myText"></span> Vbucks.</h1></div>
+</body>
+</html>
