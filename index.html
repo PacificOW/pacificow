@@ -15,8 +15,6 @@
   text-align:center;
   font-weight: bold;
   color:white;
-  margin-top:30px;
-  font-size:20px;
 }
 
 html {
@@ -53,9 +51,7 @@ function setCredits(o){
   var tier=document.getElementById("tier").value-0;
   var cred=document.getElementById("credit").value-0;
   document.getElementById("myText").innerHTML=cred+remaining(tier);
-  document.getElementById("myTextv2").innerHTML=remaining(tier);
 }
-
 </script>
 </head>
 <body>
@@ -64,7 +60,7 @@ function setCredits(o){
   <input type="text" id="credit" oninput="setCredits()"
    placeholder="Enter current balance">
   <div id="Declaration">
-  If you finish the Battlepass, and do not spend any VBucks,
-      you will have <span id="myText"></span> Vbucks. You still have <span id="myTextv2"></span> Vbucks remaining in your battlepass.</div>
+  <h1>If you finish the Battlepass, and do not spend any VBucks,
+      you will have <span id="myText"></span> Vbucks.</h1></div>
 </body>
 </html>
